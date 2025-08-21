@@ -35,12 +35,29 @@ const ConnectTwo = () => {
         })
     }
 
+    async function makeTransfer() {
+        let params = [{
+            from: "0xB092d3Fe8b74d46D9Fa311903d4836Fe92762BB0",
+            to: "0x9d9bEA3C852BE30c4738C9fFcB18622fE8a2e5FF",
+            gas: Number(50000).toString(16),
+            gasPrice: Number(25000000).toString(16),
+            value: Number(100000000000000).toString(16),
+        }]
+
+        let result = await window.ethereum.request({ method: "eth_sendTransaction", params }).catch((err) => {
+            console.log(err)
+        })
+    }
 
   return (
     <div>
       <input type='button' onClick={handleWalletConnection} value="Connect to Metamask" />
       <h4>My Contract Address: {myAddress}</h4>
       <h1>My Balance: ${myAccountBalance}</h1>
+
+      <form onSubmit={makeTransfer}>
+        <input type='submit' value='Send'/>
+      </form>
       {errorMessage}
     </div>
   )

@@ -13,7 +13,7 @@ const ConnectTwo = () => {
     }
     
 
-    const handleMetamaskConnection = () => {
+    const handleWalletConnection = () => {
         // to check for ethereum network on a device
         if (window.ethereum){
             // request for user action to sign install a network
@@ -38,7 +38,7 @@ const ConnectTwo = () => {
 
   return (
     <div>
-      <input type='button' onClick={handleMetamaskConnection} value="Connect to Metamask" />
+      <input type='button' onClick={handleWalletConnection} value="Connect to Metamask" />
       <h4>My Contract Address: {myAddress}</h4>
       <h1>My Balance: ${myAccountBalance}</h1>
       {errorMessage}
